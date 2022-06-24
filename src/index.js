@@ -30,11 +30,16 @@ app.use("/api", adminRoutes);
 
 // Serve the frontend
 app.use(express.static(path.join(__dirname, "../frontend/build")));
-app.get("*", (req, res) =>
-  res.sendFile(
-    path.resolve(__dirname, "../", "frontend", "build", "index.html")
-  )
-);
+
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "../frontend/build", "index.html"));
+});
+// app.use(express.static(path.join(__dirname, "../frontend/build")));
+// app.get("*", (req, res) =>
+//   res.sendFile(
+//     path.resolve(__dirname, "../", "frontend", "build", "index.html")
+//   )
+// );
 app.listen(process.env.PORT || 2000, () => {
   console.log(`Server is running `);
 });
