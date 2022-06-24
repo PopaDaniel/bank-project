@@ -1,0 +1,29 @@
+@import '../../scss/utilities/variables';
+@import '../../scss/layout/colors';
+
+.userdashboard {
+  display: flex;
+  color: $clr-light;
+
+  .bg {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    mix-blend-mode: multiply;
+    top: 0;
+    left: 0;
+    object-fit: cover;
+  }
+  
+  .userdashboard-container {
+    flex: 6;
+    z-index: 10;
+    margin-left: 215px;
+
+    .userdashboard-main {
+      padding: 2em;
+      height: calc(100% - 140px);
+      margin-top: 70px;
+    }
+  }
+}
