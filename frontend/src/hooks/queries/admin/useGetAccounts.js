@@ -1,14 +1,15 @@
 import { useQuery } from "react-query";
-import { axiosInstance } from "../../../config";
+import axios from "axios";
 
 const useGetAccounts = async () => {
+
   // fetch all accounts
 
-  const { data } = await axiosInstance({
-    url: "/api/listAccounts/",
-    method: "GET",
+  const { data } = await axios({
+    url: '/api/listAccounts/',
+    method: 'GET',
     headers: {
-      Authorization: `Bearer ${localStorage.jwt}`,
+      Authorization: `Bearer ${localStorage.jwt}`
     },
   });
   return data.accounts.slice(0).reverse();
@@ -17,6 +18,6 @@ const useGetAccounts = async () => {
 export default function useApi() {
   return useQuery(["accounts"], useGetAccounts, {
     refetchOnMount: false,
-    refetchOnWindowFocus: false,
+    refetchOnWindowFocus: false
   });
 }

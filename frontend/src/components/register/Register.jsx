@@ -1,5 +1,5 @@
 import "./register.scss";
-import { axiosInstance } from "../../config";
+import axios from "axios";
 import React from "react";
 import { useFormik } from "formik";
 
@@ -22,7 +22,7 @@ export default function Register() {
       },
       validationSchema: registerSchema,
       onSubmit: async (values) => {
-        await axiosInstance({
+        await axios({
           url: "/api/signup",
           method: "POST",
           data: {
