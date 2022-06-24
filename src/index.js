@@ -27,7 +27,6 @@ app.use(cors());
 app.use(express.json());
 app.use("/api", useRoutes);
 app.use("/api", adminRoutes);
-app.get("/", (req, res) => res.send("working"));
 
 // Serve the frontend
 app.use(express.static(path.join(__dirname, "../frontend/build")));
