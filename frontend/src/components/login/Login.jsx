@@ -9,16 +9,13 @@ export default function Login() {
   const navigate = useNavigate();
   const { signIn } = useContext(AuthContext);
 
-  // Error Message State
   const [errorMessages, setErrorMessages] = React.useState("");
 
-  // used for storing user input
   const [login, setLogin] = React.useState({
     email: "",
     hash_password: "",
   });
 
-  // handle input change
   function handleChange(event) {
     const { name, value } = event.target;
     setLogin((prev) => {
@@ -51,14 +48,11 @@ export default function Login() {
       })
       .catch((error) => {
         if (error.response) {
-          // Request made and server responded
           setErrorMessages(error.response.data.message);
         } else if (error.request) {
-          // The request was made but no response was received
           console.log(error.request);
           setErrorMessages("No response!");
         } else {
-          // Something happened in setting up the request that triggered an Error
           console.log("Error", error.message);
           setErrorMessages("Somthing wrong!");
         }
