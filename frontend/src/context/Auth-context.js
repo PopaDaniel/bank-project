@@ -12,6 +12,7 @@ export const AuthContext = createContext({
   userCnp: "",
   signIn: (auth) => {},
   signOut: () => {},
+  startLogOutTimer: () => {},
 });
 
 export function AuthProvider({ children }) {
@@ -37,6 +38,23 @@ export function AuthProvider({ children }) {
     setTimeout(() => window.location.reload(), 1200);
   }
 
+  function startLogOutTimer() {
+    function tik() {
+      let min = String(Math.floor(time / 60)).padStart(2, 0);
+      let sec = String(time % 60).padStart(2, 0);
+      console.log(min, sec);
+      if (time === 0) {
+        clearInterval(timer);
+        signOut();
+      }
+      time--;
+    }
+    let time = 300;
+    tik();
+    const timer = setInterval(tik, 1000);
+    return timer;
+  }
+
   return (
     <AuthContext.Provider
       value={{
@@ -48,6 +66,7 @@ export function AuthProvider({ children }) {
         userCnp: cnp,
         signIn: signIn,
         signOut: signOut,
+        startLogOutTimer: startLogOutTimer,
       }}
     >
       <>{children}</>
