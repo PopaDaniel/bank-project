@@ -13,7 +13,7 @@ function UserId() {
   const params = useParams();
   const { state: userData } = useLocation();
 
-  console.log(userData);
+  //console.log(userData);
 
   // fetch user detials
   const { data } = useApi(`/api/listAccounts/${params.userId}`);

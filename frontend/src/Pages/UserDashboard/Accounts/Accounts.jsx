@@ -8,16 +8,8 @@ import useGetUsersAccounts from "../../../hooks/queries/users/useGetUserAccounts
 import popAction from "../../../helpers/popAction";
 import { AuthContext } from "../../../context/Auth-context";
 
-const state = {
-  timer: "",
-};
-
 function Accounts() {
   const { data: accounts } = useGetUsersAccounts();
-  const { startLogOutTimer } = useContext(AuthContext);
-
-  if (state.timer) clearInterval(state.timer);
-  state.timer = startLogOutTimer();
 
   // convert date to string
   function date(date) {
